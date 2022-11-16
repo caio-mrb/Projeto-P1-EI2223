@@ -9,5 +9,6 @@ int main()
     printf("projeto P1");
     printf("HOLA!");
     printf("Teste2");
+    printf("arrozdoce");
     return 0;
 }
