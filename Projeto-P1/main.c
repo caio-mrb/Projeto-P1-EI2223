@@ -7,5 +7,6 @@ int main()
     printf("Teste");
     printf("Testeeee");
     printf("projeto P1");
+    printf("HOLA!");
     return 0;
 }
