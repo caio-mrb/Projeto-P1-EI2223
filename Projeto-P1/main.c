@@ -8,5 +8,6 @@ int main()
     printf("Testeeee");
     printf("projeto P1");
     printf("HOLA!");
+    printf("Teste2");
     return 0;
 }
