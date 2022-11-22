@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <locale.h>
 
 
 struct Date {
@@ -22,11 +23,18 @@ struct Laptop {
 
 int main()
 {
+    setlocale(LC_ALL,"Portuguese");
 
     struct Laptop laptop[30];
-    laptop[30].date.day = 1;
 
-    printf("%d",laptop[30].date.day);
+    printf(" _               _____ _______ ____  _____    _____  ______ ____  _    _ ______  _____ _______\n");
+    printf("| |        /\   |  __ \__   __/ __ \|  __ \  |  __ \|  ____/ __ \| |  | |  ____|/ ____|__   __|\n");
+    printf("| |       /  \  | |__) | | | | |  | | |__) | | |__) | |__ | |  | | |  | | |__  | (___    | |\n");
+    printf("| |      / /\\ \ |  ___/  | | | |  | |  ___/  |  _  /|  __|| |  | | |  | |  __|  \___ \   | |\n");
+    printf("| |____ / ____ \| |      | | | |__| | |      | | \\ \\| |___| |__| | |__| | |____ ____) |  | |\n)");
+    printf("|______/_/    \\_\_|      |_|  \____/|_|      |_|  \\_\\______\___\_\\____/|______|_____/   |_|\n)");
+
+
 
     return 0;
 }
