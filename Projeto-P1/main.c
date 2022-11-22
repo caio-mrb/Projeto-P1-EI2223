@@ -3,31 +3,30 @@
 #include <string.h>
 
 
-struct date {
+struct Date {
     int day;
     int month;
     int year;
 
 };
 
-struct laptop {
+struct Laptop {
     int id;
     char processor[3];
     int ram;
     char state[10];
     char location[10];
-    struct date date;
+    struct Date date;
 
     };
 
 int main()
 {
 
-    struct laptop laptop;
-    struct date date;
-    laptop.date.day = 1;
+    struct Laptop laptop[30];
+    laptop[30].date.day = 1;
 
-    printf("%d",laptop.date.day);
+    printf("%d",laptop[30].date.day);
 
     return 0;
 }
