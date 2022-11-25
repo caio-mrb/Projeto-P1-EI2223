@@ -17,18 +17,25 @@ typedef struct Date
 typedef struct Laptops
 {
     int id;
-    char processor[3];
+    char processor[10];
     int ram;
-    char state[10];
     char location[10];
+    char state[10];
     struct Date date;
 } Laptop;
+
+typedef struct Requests {
+    char code[10];
+    int lapid;
+
+}
 
 //Declaração de funções
 
 void cls(void);
 void flushStdin(void);
 void readOption(int *num, int min, int max);
+void exitMenu(int *option);
 void requestLaptop(void);
 void writeBinaryData(Laptop testelap[30],int numElemen);
 
@@ -71,6 +78,7 @@ int main()
     test2 =1200;
 
     laptop[1].id = 1;
+
 
     writeBinaryData(laptop,2);
 
@@ -132,10 +140,8 @@ int main()
             //reportProblemLaptop();
             break;
         default:
-            printf("Caso 7");
-
-            break;
-
+            printf("Caso 7\n");
+            exitMenu(&option);
         }
     }
     while(option != 7);
@@ -198,17 +204,72 @@ void readOption(int *option, int min, int max)
 
 }
 
-void writeBinaryData(Laptop testelap[30],int numElemen) {
+void writeBinaryData(Laptop testelap[30],int numElemen)
+{
     FILE *teste;
 
     teste = fopen("teste.dat","wb");
-    if (teste == NULL){
+    if (teste == NULL)
+    {
         printf("Erro ao abrir o ficheiro!");
-    } else {
+    }
+    else
+    {
         fwrite(&numElemen,sizeof(int),1,teste);
         fwrite(testelap,sizeof(Laptop),30,teste);
 
-    fclose(teste);
+        fclose(teste);
+    }
+
+
+}
+
+void exitMenu(int *option)
+{
+    printf("             _____ _____ _____ _____ \n");
+    printf("            |   __|  _  |_   _| __  |\n");
+    printf("         ___|__   |     |_| |_|    -|___\n");
+    printf("        |   |_____|__|__|_____|__|__|   |\n");
+    printf("        |                               |\n");
+    printf("        | Tem certeza que deseja sair?  |\n");
+    printf("        | 0 - Não                       |\n");
+    printf("        | 1 - Sim                       |\n");
+    printf("        |_______________________________|\n\n");
+
+    readOption(option,0,1);
+
+    if (*option == 1) {
+        *option = 7;
+    };
+
+}
+
+void generateLaptops(Laptop laptop[30]) {
+    int i, r;
+    for (i=0,i<30,i++){
+        laptop[i].id = i;
+        r = rand(%6) + 1;
+        switch (r) {
+    case 1:
+        laptop[1].processor = "Intel Celeron";
+        break
+    case 2:
+        laptop[1].processor = "Intel Pentium";
+        break
+    case 3:
+        laptop[1].processor = "Intel Core i3";
+        break
+    case 4:
+        laptop[1].processor = "Intel Core i5";
+        break
+    case 5:
+        laptop[1].processor = "Intel Core i7";
+        break
+    case 6:
+        laptop[1].processor = "Intel Core i9";
+        break
+        }
+
     }
 
 
