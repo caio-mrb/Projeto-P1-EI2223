@@ -3,6 +3,7 @@
 #include <string.h>
 #include <locale.h>
 #include <ctype.h>
+#include <math.h>
 
 
 // Struturas
@@ -17,7 +18,7 @@ typedef struct Date
 typedef struct Laptops
 {
     int id;
-    char processor[10];
+    char processor[20];
     int ram;
     char location[10];
     char state[10];
@@ -28,13 +29,14 @@ typedef struct Requests {
     char code[10];
     int lapid;
 
-}
+} Request;
 
 //Declaração de funções
 
 void cls(void);
 void flushStdin(void);
 void readOption(int *num, int min, int max);
+void generateLaptops(Laptop laptop[30]);
 void exitMenu(int *option);
 void requestLaptop(void);
 void writeBinaryData(Laptop testelap[30],int numElemen);
@@ -46,7 +48,18 @@ int main()
 
     setlocale(LC_ALL,"Portuguese");
 
-    Laptop laptop[30];
+
+    //Zona de Teste
+
+    /*generateLaptops(laptop);
+    for (option=0;option<30;option++){
+        printf("%d\n",laptop[option].id);
+        printf("%s\n",laptop[option].processor);
+        printf("%d GB\n\n",laptop[option].ram);
+
+    }*/
+
+    //Fim Zona de Teste
 
     /*No prompt de comandos é mostrado da seguinte maneira:
      _               _____ _______ ____  _____    _____  ______ ____  _    _ ______  _____ _______
@@ -244,46 +257,50 @@ void exitMenu(int *option)
 
 }
 
+
+
 void generateLaptops(Laptop laptop[30]) {
     int i, r;
-    for (i=0,i<30,i++){
+    for(i=0;i<30;i++){
         laptop[i].id = i;
-        r = rand(%10) + 1;
+        strcpy(laptop[i].location,"Biblioteca");
+        r = rand() % 10 + 1;
         switch (r) {
     case 1:
-        laptop[i].processor = "Intel Celeron";
-        break
+        strcpy(laptop[i].processor,"Intel Celeron");
+        break;
     case 2:
-        laptop[i].processor = "Intel Pentium";
-        break
+        strcpy(laptop[i].processor,"Intel Pentium");
+        break;
     case 3:
-        laptop[i].processor = "Intel Core i3";
-        break
+        strcpy(laptop[i].processor,"Intel Core i3");
+        break;
     case 4:
-        laptop[i].processor = "Intel Core i5";
-        break
+        strcpy(laptop[i].processor,"Intel Core i5");
+        break;
     case 5:
-        laptop[i].processor = "Intel Core i7";
-        break
+        strcpy(laptop[i].processor,"Intel Core i7");
+        break;
     case 6:
-        laptop[i].processor = "Intel Core i9";
-        break
+        strcpy(laptop[i].processor,"Intel Core i9");
+        break;
     case 7:
-        laptop[i].processor = "AMD Ryzen 3";
-        break
+        strcpy(laptop[i].processor,"AMD Ryzen 3");
+        break;
     case 8:
-        laptop[i].processor = "AMD Ryzen 5";
-        break
+        strcpy(laptop[i].processor,"AMD Ryzen 5");
+        break;
     case 9:
-        laptop[i].processor = "AMD Ryzen 7";
-        break
+        strcpy(laptop[i].processor,"AMD Ryzen 7");
+        break;
     case 10:
-        laptop[i].processor = "AMD Ryzen 9";
-        break
-        }
+        strcpy(laptop[i].processor,"AMD Ryzen 9");
+        break;
+        };
+        r = rand() % 6 + 1;
+        laptop[i].ram = (int)pow((double)2,(double)r);
 
-
-    }
+    };
 
 
 }
