@@ -248,27 +248,40 @@ void generateLaptops(Laptop laptop[30]) {
     int i, r;
     for (i=0,i<30,i++){
         laptop[i].id = i;
-        r = rand(%6) + 1;
+        r = rand(%10) + 1;
         switch (r) {
     case 1:
-        laptop[1].processor = "Intel Celeron";
+        laptop[i].processor = "Intel Celeron";
         break
     case 2:
-        laptop[1].processor = "Intel Pentium";
+        laptop[i].processor = "Intel Pentium";
         break
     case 3:
-        laptop[1].processor = "Intel Core i3";
+        laptop[i].processor = "Intel Core i3";
         break
     case 4:
-        laptop[1].processor = "Intel Core i5";
+        laptop[i].processor = "Intel Core i5";
         break
     case 5:
-        laptop[1].processor = "Intel Core i7";
+        laptop[i].processor = "Intel Core i7";
         break
     case 6:
-        laptop[1].processor = "Intel Core i9";
+        laptop[i].processor = "Intel Core i9";
+        break
+    case 7:
+        laptop[i].processor = "AMD Ryzen 3";
+        break
+    case 8:
+        laptop[i].processor = "AMD Ryzen 5";
+        break
+    case 9:
+        laptop[i].processor = "AMD Ryzen 7";
+        break
+    case 10:
+        laptop[i].processor = "AMD Ryzen 9";
         break
         }
+
 
     }
 
