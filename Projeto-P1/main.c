@@ -48,6 +48,7 @@ int main()
 
     setlocale(LC_ALL,"Portuguese");
 
+    Laptop laptop[30];
 
     //Zona de Teste
 
