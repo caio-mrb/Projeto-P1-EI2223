@@ -501,7 +501,7 @@ void requestByID(Laptop laptop[MAX_LAPTOPS], Request request[MAX_REQUESTS])
     printf("        | Este número é único e pode estar   |\n");
     printf("        | entre 1111 e 9999 inclusive.       |\n");
     printf("        |                                    |\n");
-    printf("        | Ou digite 0 para cancelar.         |\n");
+    printf("        | Ou digite 0 para« cancelar.         |\n");
     printf("        |____________________________________|\n\n");
 
 
@@ -581,8 +581,10 @@ void requestForm(Laptop laptop[MAX_LAPTOPS],Request request[MAX_REQUESTS],int in
     printf("        |______________________________________|\n\n");
     printf("         Nome: ");
     fgets(request[1].name, sizeof(request[1].name),stdin);
-    printf("\n%s\n",request[1].name);
-
+    //printf("%c",request[1].name[2]);
+    if (strcmp(request[1].name,"0")==0){
+        confirmRequest(laptop,request,index);
+    }
 
 }
 
