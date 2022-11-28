@@ -515,13 +515,18 @@ void requestByID(Laptop laptop[MAX_LAPTOPS], Request request[MAX_REQUESTS])
             b = 1;
         }
         if ((laptop[i].id == option) && ((strcmp(laptop[i].state,"Disponível")) != 0))  {
-            printf("Indisponível\n",laptop[i].id);
+            printf("O portátil ID#%d está indisponível\n",laptop[i].id);
             b = 1;
         }
         if ((laptop[i].id != option)) {
             i++;
+            //printf("%d\n",i);
         }
-    }while(b!=1 && i-1<30); //ou <30
+    }while(b!=1 && i-1<MAX_LAPTOPS);
+     //ou <30
+    if (i-1==MAX_LAPTOPS){
+        printf("        Não existe um portátil com este ID\n");
+    }
 
     }while(option != 0);
 }
