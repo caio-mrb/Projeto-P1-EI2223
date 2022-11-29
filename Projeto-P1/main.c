@@ -54,6 +54,7 @@ void cls(void);
 void flushStdin(void);
 void readOption(int *option,int zeroToCancel,char message[50], int min, int max);
 void generateLaptops(Laptop laptop[MAX_LAPTOPS]);
+void mainMenu(Laptop laptop[MAX_LAPTOPS],Request request[MAX_REQUESTS]);
 void exitMenu(int *option);
 void requestLaptop(Laptop laptop[MAX_LAPTOPS],Request request[MAX_REQUESTS]);
 void writeLaptopsData(Laptop testelap[MAX_LAPTOPS]);
@@ -142,71 +143,9 @@ int main()
     test = 12;
     test2 =1200;
 
+    mainMenu(laptop,request);
 
 
-    do
-    {
-        cls();
-
-        printf("                    _____ ___ ___ _ _\n");
-        printf("                   |     | -_|   | | |\n");
-        printf("                   |_|_|_|___|_|_|___|\n\n");
-        printf("         ________________________________________\n");
-        printf("        |                                        |\n");
-        printf("        | Portáteis existentes: %2d               |\n",MAX_LAPTOPS);
-        printf("        | Portáteis disponíveis: %2d              |\n",test);
-        printf("        |                                        |\n");
-        printf("        | Quantidade de requisições ativas: %4d |\n",test);
-        printf("        | Quantidade total de requisições: %5d |\n",test2);
-        printf("        |________________________________________|\n\n");
-
-        printf("        ___________________________________________\n");
-        printf("       |                                           |\n");
-        printf("       | OPÇÕES:                                   |\n");
-        printf("       | 1 - Requisitar um portátil                |\n");
-        printf("       | 2 - Devolver um portátil                  |\n");
-        printf("       | 3 - Informações dos portáteis             |\n");
-        printf("       | 4 - Alterar a localização de um portátil  |\n");
-        printf("       | 5 - Renovar a requisição de um portátil   |\n");
-        printf("       | 6 - Relatar avaria de um portátil         |\n");
-        printf("       | 7 - Sair                                  |\n");
-        printf("       |___________________________________________|\n\n");
-
-        readOption(&option,0,"Selecione uma opção",1,7);
-
-        switch (option)
-        {
-
-        case 1:
-            printf("Caso 1\n");
-            requestLaptop(laptop,request);
-            break;
-        case 2:
-            printf("Caso 2\n");
-            //givebackLaptop();
-            break;
-        case 3:
-            printf("Caso 3\n");
-            //infoLaptop();
-            break;
-        case 4:
-            printf("Caso 4\n");
-            //changeLocationLaptop();
-            break;
-        case 5:
-            printf("Caso 5\n");
-            //renewRequestLaptop();
-            break;
-        case 6:
-            printf("Caso 6\n");
-            //reportProblemLaptop();
-            break;
-        default:
-            printf("Caso 7\n");
-            exitMenu(&option);
-        }
-    }
-    while(option != 7);
 
     return 0;
 }
@@ -311,6 +250,76 @@ void readLaptopsData(Laptop laptop[MAX_LAPTOPS])
         fread(laptop,sizeof(Laptop),MAX_LAPTOPS, data);
         fclose(data);
     }
+
+}
+
+void mainMenu(Laptop laptop[MAX_LAPTOPS],Request request[MAX_REQUESTS]){
+
+    int option;
+
+    do
+    {
+        cls();
+
+        printf("                    _____ ___ ___ _ _\n");
+        printf("                   |     | -_|   | | |\n");
+        printf("                   |_|_|_|___|_|_|___|\n\n");
+        printf("         ________________________________________\n");
+        printf("        |                                        |\n");
+        printf("        | Portáteis existentes: %2d               |\n",MAX_LAPTOPS);
+        printf("        | Portáteis disponíveis: %2d              |\n",20);
+        printf("        |                                        |\n");
+        printf("        | Quantidade de requisições ativas: %4d |\n",20);
+        printf("        | Quantidade total de requisições: %5d |\n",20);
+        printf("        |________________________________________|\n\n");
+
+        printf("        ___________________________________________\n");
+        printf("       |                                           |\n");
+        printf("       | OPÇÕES:                                   |\n");
+        printf("       | 1 - Requisitar um portátil                |\n");
+        printf("       | 2 - Devolver um portátil                  |\n");
+        printf("       | 3 - Informações dos portáteis             |\n");
+        printf("       | 4 - Alterar a localização de um portátil  |\n");
+        printf("       | 5 - Renovar a requisição de um portátil   |\n");
+        printf("       | 6 - Relatar avaria de um portátil         |\n");
+        printf("       | 7 - Sair                                  |\n");
+        printf("       |___________________________________________|\n\n");
+
+        readOption(&option,0,"Selecione uma opção",1,7);
+
+        switch (option)
+        {
+
+        case 1:
+            printf("Caso 1\n");
+            requestLaptop(laptop,request);
+            break;
+        case 2:
+            printf("Caso 2\n");
+            //givebackLaptop();
+            break;
+        case 3:
+            printf("Caso 3\n");
+            //infoLaptop();
+            break;
+        case 4:
+            printf("Caso 4\n");
+            //changeLocationLaptop();
+            break;
+        case 5:
+            printf("Caso 5\n");
+            //renewRequestLaptop();
+            break;
+        case 6:
+            printf("Caso 6\n");
+            //reportProblemLaptop();
+            break;
+        default:
+            printf("Caso 7\n");
+            exitMenu(&option);
+        }
+    }
+    while(option != 7);
 
 }
 
@@ -483,6 +492,7 @@ void requestLaptop(Laptop laptop[MAX_LAPTOPS],Request request[MAX_REQUESTS])
     }
 
     }while(option != 4);
+    mainMenu(laptop,request);
 
 }
 
@@ -501,7 +511,7 @@ void requestByID(Laptop laptop[MAX_LAPTOPS], Request request[MAX_REQUESTS])
     printf("        | Este número é único e pode estar   |\n");
     printf("        | entre 1111 e 9999 inclusive.       |\n");
     printf("        |                                    |\n");
-    printf("        | Ou digite 0 para« cancelar.         |\n");
+    printf("        | Ou digite 0 para cancelar.         |\n");
     printf("        |____________________________________|\n\n");
 
 
@@ -522,13 +532,14 @@ void requestByID(Laptop laptop[MAX_LAPTOPS], Request request[MAX_REQUESTS])
             i++;
             //printf("%d\n",i);
         }
-    }while(b!=1 && i-1<MAX_LAPTOPS);
+    }while(b!=1 && i<MAX_LAPTOPS);
      //ou <30
-    if (i-1==MAX_LAPTOPS){
+    if (i==MAX_LAPTOPS){
         printf("        Não existe um portátil com este ID\n");
     }
 
     }while(option != 0);
+    requestLaptop(laptop,request);
 }
 
 void confirmRequest(Laptop laptop[MAX_LAPTOPS],Request request[MAX_REQUESTS], int index){
@@ -552,6 +563,9 @@ void confirmRequest(Laptop laptop[MAX_LAPTOPS],Request request[MAX_REQUESTS], in
 
     readOption(&option,0,"Selecione uma opção",1,2);
 
+    if (option == 1) {
+        requestByID(laptop,request);
+    }
     if (option == 2) {
         requestForm(laptop,request,index);
     }
@@ -572,6 +586,9 @@ void alignSpaceForString(Laptop laptop[MAX_LAPTOPS],int index,int margin){
 
 void requestForm(Laptop laptop[MAX_LAPTOPS],Request request[MAX_REQUESTS],int index){
 
+    char name[25], surname[25];
+    int i;
+
     printf("         ______________________________________\n");
     printf("        |_FORMULÁRIO_DE_REQUISIÇÃO_________(X)_|\n");
     printf("        |                                      |\n");
@@ -580,10 +597,19 @@ void requestForm(Laptop laptop[MAX_LAPTOPS],Request request[MAX_REQUESTS],int in
     printf("        | digite 0.                            |\n");
     printf("        |______________________________________|\n\n");
     printf("         Nome: ");
-    fgets(request[1].name, sizeof(request[1].name),stdin);
+    fgets(name, 25,stdin);
     //printf("%c",request[1].name[2]);
-    if (strcmp(request[1].name,"0")==0){
+    if (name[0]=='0'){
+        cls();
         confirmRequest(laptop,request,index);
+
+    }
+    printf("         Apelido: ");
+    fgets(surname, sizeof(surname),stdin);
+
+    if (strcmp(surname,"0")==0){
+        printf("%s",surname);
+        requestForm(laptop,request,index);
     }
 
 }
