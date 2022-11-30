@@ -285,7 +285,9 @@ void mainMenu(Laptop laptop[MAX_LAPTOPS],Request request[MAX_REQUESTS]){
         printf("       | 7 - Sair                                  |\n");
         printf("       |___________________________________________|\n\n");
 
-        readOption(&option,0,"Selecione uma opção",1,7);
+        char text[50] = "Selecione uma opção";
+
+        readOption(&option,0,text,1,7);
 
         switch (option)
         {
@@ -335,7 +337,9 @@ void exitMenu(int *option)
     printf("        | 2 - Sim                       |\n");
     printf("        |_______________________________|\n\n");
 
-    readOption(option,0,"Selecione uma opção",1,2);
+    char text[50] = "Selecione uma opção";
+
+    readOption(option,0,text,1,2);
 
     if (*option == 2)
     {
@@ -476,7 +480,9 @@ void requestLaptop(Laptop laptop[MAX_LAPTOPS],Request request[MAX_REQUESTS])
     printf("        | 4 - Voltar                    |\n");
     printf("        |_______________________________|\n\n");
 
-    readOption(&option,0,"Selecione uma opção",1,4);
+    char text[50] = "Selecione uma opção";
+
+    readOption(&option,0,text,1,4);
 
     switch (option)
     {
@@ -514,8 +520,9 @@ void requestByID(Laptop laptop[MAX_LAPTOPS], Request request[MAX_REQUESTS])
     printf("        | Ou digite 0 para cancelar.         |\n");
     printf("        |____________________________________|\n\n");
 
+    char text[50] = "Digite o número de identificação";
 
-    readOption(&option,1,"Digite o número de identificação",1111,9999);
+    readOption(&option,1,text,1111,9999);
 
     //strcpy(laptop[6].state,"Indisponível");
 
@@ -561,7 +568,9 @@ void confirmRequest(Laptop laptop[MAX_LAPTOPS],Request request[MAX_REQUESTS], in
     printf("        | 2 - Sim                            |\n");
     printf("        |____________________________________|\n\n");
 
-    readOption(&option,0,"Selecione uma opção",1,2);
+    char text[50] = "Selecione uma opção";
+
+    readOption(&option,0,text,1,2);
 
     if (option == 1) {
         requestByID(laptop,request);
