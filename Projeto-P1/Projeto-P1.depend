@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1669752461 source:c:\users\caio\desktop\tudo\c\projeto-p1-ei2223\projeto-p1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	<ctype.h>
+	<math.h>
+	<time.h>
+
